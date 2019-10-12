@@ -20,6 +20,7 @@ namespace SHF.Controllers
             BD = _BD;
             Detail = _bdt;
         }
+		//设呢么吗
         /// <summary>
         /// 图片详细信息
         /// </summary>
