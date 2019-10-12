@@ -1,0 +1,21 @@
+.dInfo {width: 100%;text-align: left;color: #06C;margin: 20px auto;}
+.dTitle {height: 30px;line-height: 30px;}
+    .dTitle a,.trainR a,.infotitle {font-weight: bolder;font-size: 14pt;color: #1190E1;}
+.trainL {float: left;width: 200px;}
+.trainR {float: right; width: 730px; line-height: 25px; font-weight: bolder}
+.trainR span {color:#666666;}
+.back {text-align: center;border-top:dashed 1px #808080;padding-top:10px;margin-top:15px}
+.titleEnd {color:#666666}
+
+.dInfoCha{width:100%;text-align:center;margin:20px auto}
+.dTitleCha{height:30px;line-height:30px;font-weight:bolder;font-size:14pt;color:#1190E1;text-align:left;}
+.chaLeft{font-weight:bolder}
+.dInfoCha li{text-align:left;padding-left:10px;float:left;width:300px}
+.pTitle {text-align:center;font-size:18pt;font-weight:bolder;color:#1190E1;margin:20px}
+.pContent {padding-left: 40px;}
+
+.dInfoDetails {color:#666666;font-weight:bolder}
+.dInfoDetails span{color:#666666;font-weight:100}
+
+.listImg a,.listImg2{background:url(../Images/list.png) no-repeat;padding-left:18px}
+.listImg2 {background-position: 0% 40%}

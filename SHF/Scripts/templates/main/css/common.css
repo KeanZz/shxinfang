@@ -1,0 +1,261 @@
+@charset "utf-8";
+
+/* CSS Document */
+
+* {
+	box-sizing: border-box;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	-webkit-font-smoothing: antialiased;
+}
+
+body,
+html {
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+p,
+blockquote,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+pre,
+form,
+fieldset,
+legend,
+button,
+input,
+textarea {
+	margin: 0px;
+	padding: 0px;
+	font-family: "微软雅黑";
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+div,
+td,
+input,
+a,
+label,
+span,
+html {
+	font-family: "微软雅黑", Verdana, Geneva, sans-serif;
+	font-weight: normal;
+}
+
+fieldset,
+img {
+	border: 0;
+}
+
+li {
+	list-style: none;
+	font-family: "微软雅黑";
+}
+.nb-invite-wrap{
+	display:none;
+}
+body,
+button,
+input,
+select,
+textarea
+/* for ie */
+
+{
+	font: 78%/1.5 tahoma, Helvetica, arial, "\5b8b\4f53", sans-serif;
+	font-family: "微软雅黑";
+}
+
+address,
+cite,
+dfn,
+em,
+var {
+	font-style: normal;
+}
+
+
+/* 将斜体扶正 */
+
+code,
+kbd,
+samp {
+	font-family: courier new, courier, monospace;
+}
+
+ins {
+	text-decoration: none;
+}
+
+del {
+	text-decoration: line-through;
+}
+
+address,
+cite,
+dfn,
+em,
+var {
+	font-style: normal;
+}
+
+caption,
+td {
+	font-weight: normal;
+}
+
+cite,
+blackquote,
+em,
+i {
+	font-style: italic;
+}
+
+strong,
+b {
+	font-weight: bold;
+}
+
+pre,
+code {
+	font-family: monospace;
+	font-size: 1.1em;
+}
+
+abbr[title],
+acronym[title] {
+	border-bottom: 1px dotted;
+	cursor: help;
+}
+
+table {
+	border-spacing: 0;
+}
+
+q:before,
+q:after,
+blockquote:before,
+blockquote:after {
+	content: "";
+	content: none
+}
+
+blockquote,
+q {
+	quotes: none;
+}
+
+legend {
+	color: #000;
+}
+
+button,
+input,
+select,
+textarea {
+	font-size: 14px;
+}
+
+button,
+input[type="button"],
+input[type="submit"] {
+	cursor: pointer;
+	border: 0px;
+}
+
+a {
+	text-decoration: none;
+	cursor: pointer;
+	outline: none;
+	color: #0063dc;
+	font-family: "微软雅黑";
+	transition: all .5s linear;
+	-webkit-transition: all .5s linear;
+	-moz-transition: all .5s linear;
+	-ms-transition: all .5s linear;
+	-o-transition: all .5s linear;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+a:focus,
+button,
+input[type="button"],
+input[type="submit"] {
+	outline: none;
+}
+
+html {
+	color: #333;
+}
+
+.fl {
+	float: left;
+}
+
+.fr {
+	float: right;
+}
+
+.mt5 {
+	margin-top: 5px;
+}
+
+.mt10 {
+	margin-top: 10px;
+}
+
+.mt50 {
+	margin-top: 50px;
+}
+
+.mb50 {
+	margin-bottom: 50px;
+}
+
+.ml10 {
+	margin-left: 10px;
+}
+
+.mr10 {
+	margin-right: 10px;
+}
+
+.ml10 {
+	margin-left: 10px;
+}
+
+.w1132 {
+	width: 1132px;
+	clear: both;
+	overflow: hidden;
+	margin-left: auto;
+	margin-right: auto;
+}
+img.img-responsive{
+	max-width: 100%;
+	display: block;
+	margin: 0 auto;
+}

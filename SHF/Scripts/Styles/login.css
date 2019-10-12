@@ -1,0 +1,28 @@
+*,img,a img,a:hover img{font-family:Arial , sans-serif, Helvetic;font-size:12px;border:0 none;margin:0;padding:0}
+td{text-align:center}
+li{list-style-type:none}
+a,a:link{color:#507ea4;text-decoration:none}
+a:hover{color:#0095d9;text-decoration:none}
+body{text-align:center;background:#fff url(../images/bg.png) repeat-x}
+#container{text-align:left;width:978px;margin:0 auto}
+#head{width:100%;height:147px;background:url(../images/head.png) no-repeat;position:relative;z-index:2}
+#site{color:#6c6e6f;text-align:right;font-size:12px;padding:10px 38px 0 0}
+#site a{color:#000}
+#foot{text-align:center;color:#292929;margin:17px 0 0}
+#foot #footer{text-align:center;width:100%;background:#fff url(../images/foot_bg.png) repeat-x;padding-top:40px;padding-bottom:12px;margin:0 auto}
+.con{width:800px;margin-right:auto;margin-left:auto;margin-top:60px}
+.login .b_left{background-image:url(../images/p1.jpg);background-repeat:no-repeat;float:left;height:377px;width:232px}
+.login .b_right{background-image:url(../images/p1.jpg);background-repeat:no-repeat;float:left;height:377px;width:232px;background-position:-233px 0}
+.login .input{height:377px;width:336px;float:left;background-image:url(../images/b1.gif);background-repeat:repeat-x;background-position:0 -116px}
+.input-border{border:1px solid #b8b8b8;width:173px;line-height:20px;font-size:14px;padding-left:2px;padding-top:1px;padding-bottom:2px;height:24px}
+.logo{text-align:left;background-repeat:no-repeat;background-position:left top;height:82px;margin-top:18px;margin-bottom:5px}
+.login-b,.login-b2,.login-b3{background-image:url(../images/b2.gif);background-position:0 0;float:left;height:32px;width:82px;display:block;border:0;margin-top:9px;background-repeat:no-repeat;margin-left:3px;cursor:pointer!important}
+.login-b2{background-image:url(../images/b2.gif);background-position:0 -33px}
+.login-b3{background-image:url(../images/b2.gif);background-position:0 -66px}
+.logTb td{text-align:left;padding-left:9px;color:#666;padding-bottom:6px;padding-top:6px}
+.logTb th{text-align:right;width:62px;font-weight:400;line-height:14px;color:#666}
+.missPwd{color:#666;line-height:14px;margin-top:17px}
+.missPwd a{color:#ba2636;text-decoration:underline}
+.missPwd a:hover{color:#d73535;text-decoration:underline}
+.clearfix{clear:both}
+#lblMessage{color:Red}

@@ -1,0 +1,36 @@
+/* 通用模块 */
+.mod .m_tit{background:url(../images/mod_tit_hangye.png) no-repeat;height:23px;text-align:left;}
+.mod .m_tit span{line-height: 24px}
+.mod .m_tit a{color:#1F98E5;float:right;line-height:22px;width:40px;display:block;}
+
+/*特殊模块*/
+#mid_fl{height:67px;background:url(../images/mod_bg_logolist.png) no-repeat;overflow:hidden;}
+#mid_fl .m_cnt{padding:0;border:1px solid #6886ff;}
+#mid_fl #marquee{width:100%;height:42px;}
+#mid_fl #marquee li{float:left;width:120px;height:40px;border:1px solid #BFBFBF;}
+
+.modArea .m_tit{background:url(../images/mod_tit_hangye.png) no-repeat;height:23px;}
+.modArea .m_tit span{float:left;color: #FFFFFF;font-weight: bold;line-height: 24px;margin-left: 10px;width:80px;}
+.modArea .m_tit a{display:block;height:23px;float:right;}
+.modArea .m_cnt{background:none;padding:0;margin:0;padding-left:23px;border:1px solid #015388;}
+.modArea .m_cnt li{float:none;display:block;width:100%;height:29px;font:200 12px/29px "宋体";color:#5b5656;}
+.modArea .m_cnt a{color:#015084;display:inline-block;width:195px}
+.modArea .mod{width: 309px;background: url(../images/index_list.png) no-repeat;}
+.mid_left{float: left;}
+.mid_right{float: right;}
+
+#mid_notice .m_tit,#div_Point .m_tit{background:url("../images/mod_tit_nav.png") no-repeat;width:204px; height:29px;color:#fff;font-size:12px;font-weight:bold;line-height:28px;padding-left: 8px;}
+#mid_notice .m_cnt,#div_Point .m_cnt{background-color:#FFFFF5;border:1px solid #01548A;border-width: 0 1px 1px;width: 202px;padding:0;height:100%;margin:0;}
+#mid_notice .m_cnt li,#div_Point .m_cnt li{height: 18px;padding: 3px 4px 3px 5px;width: 170px}
+#mid_notice .m_cnt ul{padding-left:18px;margin-bottom:10px}
+#mid_notice .m_cnt li{list-style:url(../Images/arrow1.gif) square;border-bottom:1px dotted  #bbb;padding-left:0}
+#div_Point{float: left; width: 204px;margin-top: 19px;}
+#div_Point .m_cnt{padding-bottom:6px}
+
+#mid_pshow li{float:left;width:102px;height:107px;margin-right:25px;overflow:hidden;color:#5b5656;display:inline;}
+#mid_pshow li img{width:102px;height:77px;}
+#mid_pshow li div{text-align:center;margin-top:10px;}
+#mid_pshow .m_cnt{background-color:#f4f5f7;padding:0;margin:6px 0 0 25px;}
+
+.divWeather1{height: 185px;overflow: hidden}
+.divWeather2{overflow: hidden;height: 30px;margin-bottom: 20px;}

@@ -1,0 +1,318 @@
+﻿@{
+    ViewBag.Title = "房产信息修改";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style type="text/css">
+    table a {
+        text-decoration: none;
+    }
+
+    .layui-input-block {
+        width: 190px;
+    }
+
+    /*.layui-form-item .layui-inline {
+        margin-right: 250px;
+    }*/
+
+    input, textarea {
+        color: #00B2E2;
+    }
+</style>
+<div class="layui-fluid form">
+    <div class="layui-card">
+        <div class="layui-card-header">房产信息添加</div>
+        <div class="layui-card-body" style="padding:15px;">
+            <div class="layui-form">
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">楼盘名称</label>
+                        <div class="layui-input-block">
+                            <input id="Name" value="@ViewBag.Build.Name" class="layui-input" type="text">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">楼盘地址</label>
+                        <div class="layui-input-block">
+                            <input id="Address" value="@ViewBag.Build.Address" class="layui-input" type="text">
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">平均价格</label>
+                        <div class="layui-input-block">
+                            <input id="AveragePrice" value="@ViewBag.Build.AveragePrice" placeholder="必须是整数或者小数" class="layui-input" type="text">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">周边商业</label>
+                        <div class="layui-input-block">
+                            <input id="Business" value="@ViewBag.Build.Business" class="layui-input" type="text">
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">周边学校</label>
+                        <div class="layui-input-block">
+                            <input id="School" value="@ViewBag.Build.School" class="layui-input" type="text">
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">周边医疗</label>
+                        <div class="layui-input-block">
+                            <input type="text" id="Hospital" value="@ViewBag.Build.Hospital" class="layui-input" />
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">休闲娱乐</label>
+                        <div class="layui-input-block">
+                            <input type="text" id="Enjoy" value="@ViewBag.Build.Enjoy" class="layui-input" />
+                        </div>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">交房时间</label>
+                        <div class="layui-input-block">
+                            <input type="text" id="DeadLine" value="@ViewBag.Build.DeadLine" placeholder="例如：2023-10-1" class="layui-input" />
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">总面积</label>
+                        <div class="layui-input-block">
+                            <input type="text" id="Areas" placeholder="必须是整数或者小数" value="@ViewBag.Build.Areas" class="layui-input" />
+                        </div>
+
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">绿化率</label>
+                        <div class="layui-input-block">
+                            <input type="text" id="Green" value="@ViewBag.Build.Green" placeholder="必须是整数或者小数" class="layui-input" />
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">房屋年限</label>
+                        <div class="layui-input-block">
+                            <input type="text" id="Years" placeholder="必须是整数" value="@ViewBag.Build.Years" class="layui-input" />
+                        </div>
+
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">物业名称</label>
+                        <div class="layui-input-block">
+                            <input type="text" id="Property" value="@ViewBag.Build.Property" class="layui-input" />
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">开发商名称</label>
+                        <div class="layui-input-block">
+                            <input type="text" id="Develops" value="@ViewBag.Build.Developers" class="layui-input" />
+                        </div>
+
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">预售许可证</label>
+                        <div class="layui-input-block">
+                            <input type="text" id="Certificate" value="@ViewBag.Build.Certificate" class="layui-input" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 0主页图 1：bannner图  2：实景鉴赏 3：周边配套 交通   4：周边配套 商业教育  5 周边配套 医疗休闲  6：户型样板-->
+            <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+                <legend>主页图</legend>
+            </fieldset>
+            <table class="bordered layui-table" lay-skin="line">
+                <thead>
+                    <tr>
+                        <th>图片</th>
+                        <th>描述说明</th>
+                    </tr>
+                </thead>
+                <tbody id="TbodyList">
+                    @if (ViewBag.Details != null)
+                    {
+                        foreach (var item in (ViewBag.Details as List<Model.Content.BDetails>).FindAll(z => z.Type == 0))
+                        {
+                            <tr>
+                                <td style="height:50px"><img src="@item.Urls" /></td>
+                                <td>@item.Explain</td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+            <!-- 0主页图 1：bannner图  2：实景鉴赏 3：周边配套 交通   4：周边配套 商业教育  5 周边配套 医疗休闲  6：户型样板-->
+            <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+                <legend>轮播图</legend>
+            </fieldset>
+            <table class="bordered layui-table" lay-skin="line">
+                <thead>
+                    <tr>
+                        <th>图片</th>
+                        <th>描述说明</th>
+                    </tr>
+                </thead>
+                <tbody id="TbodyList">
+                    @if (ViewBag.Details != null)
+                    {
+                        foreach (var item in (ViewBag.Details as List<Model.Content.BDetails>).FindAll(z => z.Type == 1))
+                        {
+                            <tr>
+                                <td style="height:50px"><img src="@item.Urls" /></td>
+                                <td>@item.Explain</td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+            <!-- 0主页图 1：bannner图  2：实景鉴赏 3：周边配套 交通   4：周边配套 商业教育  5 周边配套 医疗休闲  6：户型样板-->
+            <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+                <legend>实景鉴赏</legend>
+            </fieldset>
+            <table class="bordered layui-table" lay-skin="line">
+                <thead>
+                    <tr>
+                        <th>图片</th>
+                        <th>描述说明</th>
+                    </tr>
+                </thead>
+                <tbody id="TbodyList">
+                    @if (ViewBag.Details != null)
+                    {
+                        foreach (var item in (ViewBag.Details as List<Model.Content.BDetails>).FindAll(z => z.Type == 2))
+                        {
+                            <tr>
+                                <td style="height:50px"><img src="@item.Urls" /></td>
+                                <td>@item.Explain</td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+            <!-- 0主页图 1：bannner图  2：实景鉴赏 3：周边配套 交通   4：周边配套 商业教育  5 周边配套 医疗休闲  6：户型样板-->
+            <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+                <legend>周边交通图</legend>
+            </fieldset>
+            <table class="bordered layui-table" lay-skin="line">
+                <thead>
+                    <tr>
+                        <th>图片</th>
+                        <th>描述说明</th>
+                    </tr>
+                </thead>
+                <tbody id="TbodyList">
+                    @if (ViewBag.Details != null)
+                    {
+                        foreach (var item in (ViewBag.Details as List<Model.Content.BDetails>).FindAll(z => z.Type == 3))
+                        {
+                            <tr>
+                                <td style="height:50px"><img src="@item.Urls" /></td>
+                                <td>@item.Explain</td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+            <!-- 0主页图 1：bannner图  2：实景鉴赏 3：周边配套 交通   4：周边配套 商业教育  5 周边配套 医疗休闲  6：户型样板-->
+            <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+                <legend>周边商业教育图</legend>
+            </fieldset>
+            <table class="bordered layui-table" lay-skin="line">
+                <thead>
+                    <tr>
+                        <th>图片</th>
+                        <th>描述说明</th>
+                    </tr>
+                </thead>
+                <tbody id="TbodyList">
+                    @if (ViewBag.Details != null)
+                    {
+                        foreach (var item in (ViewBag.Details as List<Model.Content.BDetails>).FindAll(z => z.Type == 4))
+                        {
+                            <tr>
+                                <td style="height:50px"><img src="@item.Urls" /></td>
+                                <td>@item.Explain</td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+            <!-- 0主页图 1：bannner图  2：实景鉴赏 3：周边配套 交通   4：周边配套 商业教育  5 周边配套 医疗休闲  6：户型样板-->
+            <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+                <legend>医疗休闲</legend>
+            </fieldset>
+            <table class="bordered layui-table" lay-skin="line">
+                <thead>
+                    <tr>
+                        <th>图片</th>
+                        <th>描述说明</th>
+                    </tr>
+                </thead>
+                <tbody id="TbodyList">
+                    @if (ViewBag.Details != null)
+                    {
+                        foreach (var item in (ViewBag.Details as List<Model.Content.BDetails>).FindAll(z => z.Type == 5))
+                        {
+                            <tr>
+                                <td style="height:50px"><img src="@item.Urls" /></td>
+                                <td>@item.Explain</td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+            <!-- 0主页图 1：bannner图  2：实景鉴赏 3：周边配套 交通   4：周边配套 商业教育  5 周边配套 医疗休闲  6：户型样板-->
+            <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
+                <legend>户型样板</legend>
+            </fieldset>
+            <table class="bordered layui-table" lay-skin="line">
+                <thead>
+                    <tr>
+                        <th>图片</th>
+                        <th>描述说明</th>
+                    </tr>
+                </thead>
+                <tbody id="TbodyList">
+                    @if (ViewBag.Details != null)
+                    {
+                        foreach (var item in (ViewBag.Details as List<Model.Content.BDetails>).FindAll(z => z.Type == 6))
+                        {
+                            <tr>
+                                <td style="height:50px"><img src="@item.Urls" /></td>
+                                <td>@item.Explain</td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $(function () {            
+        layui.use('laydate', function () {
+            var laydate = layui.laydate;
+            //执行一个laydate实例
+            laydate.render({
+                elem: "#DeadLine"
+            });
+        });    
+    });
+    //错误处理
+    function OnError(XMLHttpRequest, textStatus, errorThrown) {
+        layer.msg("出现错误" + errorThrown, { icon: 3 });
+    }
+</script>

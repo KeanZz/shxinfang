@@ -1,0 +1,108 @@
+﻿
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>上海馨房</title>
+		<link href="~/Scripts/templates/main/css/common.css?1121" rel="stylesheet" />
+		<link href="~/Scripts/templates/main/css/style.css?999" rel="stylesheet" />
+	</head>
+
+<body>
+
+    <!--头部-->
+		<div class="header">
+			<div class="h_wrap">
+				<div class="logo fl">
+					<a><img src="~/Scripts/templates/main/images/logo.png" /></a>
+				</div>
+				<div class="h-mobile fr">
+					<h2><a>400-127-9602</a></h2>
+					<p>24小时热线服务</p>
+					
+				</div>
+			</div>
+
+		</div>
+		<!--banner-->
+		<div class="ibanner">
+			<img class="img-banner" src="~/Scripts/templates/main/images/ibanner.jpg" />
+		</div>
+
+
+		<!--精品房源-->
+		<div class="iproduct" id="iproduct">
+			<div class="ipro-tit">
+				<img src="~/Scripts/templates/main/images/ipro-tit.png" />
+			</div>
+            <div class="housing-div">
+				<ul>
+                @foreach(var item in ViewBag.Main)
+                {
+                    <li>
+					<a href="/main/Detail?PID=@item.PID">
+						<img src="@item.Urls" />
+                        <div>
+								<h2>@item.Name</h2>
+								<p>地址：@(item.Address.Length>11 ? item.Address.Substring(10):item.Address) …</p>
+								<label>查看楼盘</label>
+							</div>
+					</a>
+				</li>  
+                }				             
+			</ul>
+           </div>
+		</div>
+		<div class="ibox01-div">
+			<div class="ibox01-img">
+				<img src="~/Scripts/templates/main/images/ibox01-img.png"/>
+			</div>
+		</div>
+
+    <!--关于我们-->
+		<div class="index-box05" id="about">
+			<div class="ibox05-tit">
+				<h2>公司介绍</h2>
+				<p>about us</p>
+			</div>
+			<div class="ibox05-div">
+				<div class="aboutus fl">
+					<h2>上海馨房</h2>
+					<p>上海馨房隶属于上海馨房，是深耕沿沪房地产市场的专业服务团队。为地产投资、开发、经营和管理提供全程服务。主要经营开发商营销策划全案委托楼盘销售。</p>
+					<p>公司汇集地产营销、建筑规划 、商业零售、招商营运、创意设计、地产融资、金融财务等专业精英团队，累计服务国内房地产项目上百个，总规模逾50万平方米，函盖“瞰景高层、花园洋房、精装公寓、合院别墅”等多种类别，执行团队均有3年以上从业经历，操作经验丰富。“上海馨房”已与众多房产企业、品牌商家、相关政府机构和行业组织等建立了长期良好的合作关系。</p>
+				</div>
+				<div class="aboutus-img fr">
+					<img src="~/Scripts/templates/main/images/about-img.jpg"/>
+				</div>
+			</div>
+		</div>
+
+    <!--首页底部-->
+		<div class="ifooter" id="ifooter">
+			<div class="ifoot-wrap">
+				<div class="ifoot-fl fl">
+					<h5>上海馨房</h5>
+					<p>客服热线：<a>400-127-9602</a>（温经理）</p>
+					<p>邮箱：774011455@qq.com</p>
+					<p>地址：静安区永和路118弄43号502</p>
+				</div>
+				<div class="ifoot-fr fr">
+					<p>[官]售楼处：</p>
+					<h2><a>400-127-9602</a></h2>
+				</div>
+			</div>
+			<p class="copyright">Copyright©2019&nbsp;&nbsp;上海馨房（上海馨房）&nbsp;&nbsp;&nbsp;&nbsp;
+		</div>
+		
+		
+
+		<script src="~/Scripts/templates/main/js/jquery-2.1.1.min.js" type="text/javascript"></script>
+		<script>
+		    $(".housing-div ul li:nth-child(4n+1)").css("margin-left", "0px");
+		</script>
+		<script>
+			
+</script>
+
+</body>
+</html>

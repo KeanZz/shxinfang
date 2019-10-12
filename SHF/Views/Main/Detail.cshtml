@@ -1,0 +1,621 @@
+﻿@model Model.Content.Builds
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="format-detection" content="telephone=yes" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=3,user-scalable=yes" />
+    <title></title>
+    <link rel="stylesheet" href="~/Scripts/templates/main/css/common.css?222" />
+    <link rel="stylesheet" href="~/Scripts/templates/main/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Scripts/templates/main/css/media_01.css" />
+    <link rel="stylesheet" href="~/Scripts/templates/main/css/media_02.css" />
+    <style type="text/css">
+        img {
+            display: block;
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body class="bg-color">
+    <div class="phead container">
+        <div class="plogo fl">
+            <a><img src="~/Scripts/templates/main/images/plogo.png" /></a>
+        </div>
+
+        <div class="pmobile fr">
+            <p>免费服务热线</p>
+            <h3><a>400-127-9602</a></h3>
+        </div>
+    </div>
+
+    <div class="nav container">
+        <ul>
+            <li class="on border-b">
+                <a href="/main/index">首页</a>
+            </li>
+            <li class="border-b">
+                <a href="#pbox01">楼盘动态</a>
+            </li>
+            <li class="border-b">
+                <a href="/main/index#iproduct">楼盘查询</a>
+            </li>
+            <li class="border-b">
+                <a href="/main/index#about">关于我们</a>
+            </li>
+        </ul>
+    </div>
+
+
+    <!--楼盘轮播图-->
+    <div id="myCarousel" class="carousel  container slide" data-ride="carousel" data-interval="2000">
+        <!-- 轮播（Carousel）项目 -->
+        <div class="carousel-inner" ontouchstart="getFlag()" ontouchmove="setFlag()" ontouchend="change()">           
+            @{
+               int num = 0;
+               foreach (var item in (ViewBag.Details as List<Model.Content.BDetails>).FindAll(z => z.Type == 1))
+               {
+                    if (num==0)
+                    {
+                        <div class="item active">
+                            <img src="@item.Urls">
+                        </div>
+                        num++;
+                    }
+                    else
+                    {
+                        <div class="item">
+                            <img src="@item.Urls">
+                        </div>
+                    }
+                }
+            }
+        </div>
+
+        <!-- 轮播（Carousel）导航 -->
+        <a class="carousel-control left" href="#myCarousel" data-slide="prev" style="display: none;">
+            <span _ngcontent-c3=""
+                  aria-hidden="true" class="glyphicon glyphicon-chevron-right"></span>
+        </a>
+        <a class="carousel-control right" href="#myCarousel" data-slide="next" style="display: none;">&rsaquo;</a>
+    </div>
+
+    <input type="text" value="@Model.PID" id="Fid" style="display:none" />
+    <!--价格享团购-->
+    <div class="page-box01">
+        <div class="pbox01-top">
+            <div class="page-price fl">
+                <h3>均价：<label>9500</label>元/平米</h3>
+                <ul>
+                    <li class="pbox01-li01">
+                        <a>预约回电</a>
+                    </li>
+                    <li class="pbox01-li02">
+                        <a>意向登记</a>
+                    </li>
+                    <li class="pbox01-li03">
+                        <a>获取地址</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="page-tuan fr">
+                <h3><label>24小时</label>预约报名享团购价</h3>
+                <p>目前已提交150人</p>
+            </div>
+        </div>
+        <form id="allday">
+            <div class="tuan-input">
+
+                <input class="fl" type="text" value="" placeholder="姓名" id="name2" />
+                <input class="fr" type="tel" value="" placeholder="电话" id="phone2" />
+
+            </div>
+
+            <div class="btn-submit">
+                <a id="submit02">立即预约</a>
+            </div>
+        </form>
+
+        <div class="tuan-gun">
+            <img src="~/Scripts/templates/main/images/success.gif" />
+        </div>
+
+    </div>
+
+
+    <!--实景鉴赏-->
+    <div class="page-box02" id="pbox01">
+        <div class="title">
+            <img src="~/Scripts/templates/main/images/title01.png" />
+        </div>
+        <div class="pbox02-con">
+            <ul>
+                @foreach (var item in (ViewBag.Details as List<Model.Content.BDetails>).FindAll(z => z.Type == 2))
+                {
+                    <li>
+                        <img src="@item.Urls" />
+                        <a>@item.Explain</a>
+                    </li>
+                }
+
+            </ul>
+        </div>
+    </div>
+
+
+
+
+    <!--周边配套-->
+    <div class="page-box03" id="pbox02">
+        <div class="title">
+            <img src="~/Scripts/templates/main/images/title02.png" />
+        </div>
+        <div class="pbox03-con" id="switchTab">
+            <div class="pbox03-title">
+                <a class="on">区位交通</a>
+                <a>商业教育</a>
+                <a>医疗休闲</a>
+            </div>
+            <div class="pbox03-ul">
+                <ul style="display: block;">
+                    @foreach (var item in (ViewBag.Details as List<Model.Content.BDetails>).FindAll(z => z.Type == 3))
+                    {
+                        <li class="fl">
+                            <img src="@item.Urls" />
+                            <a>@item.Explain</a>
+                        </li>
+                    }
+
+                </ul>
+                <ul>
+
+                    @foreach (var item in (ViewBag.Details as List<Model.Content.BDetails>).FindAll(z => z.Type == 4))
+                    {
+                        <li class="fl">
+                            <img src="@item.Urls" />
+                            <a>@item.Explain</a>
+                        </li>
+                    }
+
+                </ul>
+                <ul>
+
+                    @foreach (var item in (ViewBag.Details as List<Model.Content.BDetails>).FindAll(z => z.Type == 5))
+                    {
+                        <li class="fl">
+                            <img src="@item.Urls" />
+                            <a>@item.Explain</a>
+                        </li>
+                    }
+
+                </ul>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!--户型样板-->
+    <div class="page-box02" id="pbox03">
+        <div class="title">
+            <img src="~/Scripts/templates/main/images/title03.png" />
+        </div>
+        <div class="pbox02-con">
+            <ul>
+                @foreach (var item in (ViewBag.Details as List<Model.Content.BDetails>).FindAll(z => z.Type == 6))
+                {
+                    <li class="fl">
+                        <img src="@item.Urls" />
+                        <a>@item.Explain</a>
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+
+
+    <!--楼盘实景-->
+    <div class="page-box02" id="pbox04">
+        <div class="title">
+            <img src="~/Scripts/templates/main/images/title04.png" />
+        </div>
+        <div class="pbox05-con">
+            <img src="~/Scripts/templates/main/images/jt.png" />
+            <div class="pbox05-div">
+                <p>
+                    @if (Model.Business != "")
+                    {
+                        <span style='font-size:16px;'>【商业】  @Model.Business  </span><br />
+                    }
+                    @if (Model.School != "")
+                    {
+                        <span style='font-size:16px;'>【学校】  @Model.School </span><br />
+                    }
+                    @if (Model.Hospital != "")
+                    {
+                        <span style='font-size:16px;'>【医疗】  @Model.Hospital </span><br />
+                    }
+                    @if (Model.Enjoy != "")
+                    {
+                        <span style='font-size:16px;'>【休闲】  @Model.Enjoy  </span><br />
+                    }
+
+
+
+                    @if (Model.Areas != 0)
+                    {
+                        <span style='font-size:16px; '>【建筑面积】：@Model.Areas m²</span> <br />
+                    }
+                    @if (Model.Green != 0)
+                    {
+                        <span style='font-size:16px; '>【绿 化 率】：@Model.Green %</span> <br />
+                    }
+                    @if (Model.Years != 0)
+                    {
+                        <span style='font-size:16px; '>【产权年限】：@Model.Years </span> <br />
+                    }
+                    @if (Model.Address != "")
+                    {
+                        <span style='font-size:16px; '>【楼盘地址】：@Model.Address </span> <br />
+                    }
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!--楼盘实景-->
+    <div class="page-box02" id="pbox05">
+        <div class="title">
+            <img src="~/Scripts/templates/main/images/title05.png" />
+        </div>
+        <div class="pbox06-con">
+            <ul>               
+                <li>
+                    <div class="wenzi fl">
+                        <h5>价格更低</h5>
+                        <p>同样的房子，我们可以让您享受市场底价，如果外面有更便宜的，我们将以2倍的差价补偿给您，不玩虚的、可以白纸黑字盖章，您可以随便对比，这就是我们与中介的区别。</p>
+                    </div>
+                    <div class="pbox06-img fr">
+                        <img src="~/Scripts/templates/main/images/pbox06-img01.jpg" />
+                    </div>
+                </li>
+                <li>
+                    <div class="wenzi fr">
+                        <h5>房源优先</h5>
+                        <p>对于一些稀缺房源，我们会优先自己销售，不会给中介代销。所以，稀缺好房源您在中介那里买不到，但是跟着我们买，所有房源您都可以优先选择。</p>
+                    </div>
+                    <div class="pbox06-img fl">
+                        <img src="~/Scripts/templates/main/images/pbox06-img02.jpg" />
+                    </div>
+                </li>
+                <li>
+                    <div class="wenzi fl">
+                        <h5>风险规避</h5>
+                        <p>如果您定下后不想要了、或者家人不同意买了，只要您在签合同之前提出来，我们承诺无条件帮您解决，不用您花一分钱，让您无后顾之忧，这是任何中介都无法给您的！</p>
+                    </div>
+                    <div class="pbox06-img fr">
+                        <img src="~/Scripts/templates/main/images/pbox06-img03.jpg" />
+                    </div>
+                </li>
+                <li>
+                    <div class="wenzi fr">
+                        <h5>售后服务</h5>
+                        <p>选择中介，往往是一锤子买卖，只要签了合同，您遇到什么事情，很难找到人对接。而跟着我们买，售后服务有保证，我们提供一对一终生服务。买房是大事，风险越低越好！</p>
+                    </div>
+                    <div class="pbox06-img fl">
+                        <img src="~/Scripts/templates/main/images/pbox06-img04.jpg" />
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!--楼盘实景-->
+    <div class="page-box02" id="pbox06">
+        <div class="title">
+            <img src="~/Scripts/templates/main/images/title06.png" />
+        </div>
+        <div class="pbox07-con">
+            <div class="pbox07-fl fl">
+                <p>因车辆有限，提前预约可享</p>
+                <h5>免费班车接送及优先派车服务</h5>
+                <p>非本地自驾客户提前预约可享</p>
+                <h5>油费/过路费报销政策</h5>
+                <h3><a>400-127-9602</a></h3>
+                <a class="btn-zixun" href="tel:400-127-9602">立即咨询</a>
+            </div>
+            <div class="pbox07-fr fr">
+                <img src="~/Scripts/templates/main/images/pbox07-img.jpg" />
+            </div>
+        </div>
+    </div>
+
+    <div class="pbox08-con">
+        <a href="tel:400-127-9602">
+            <h3><label>VIP</label><span>贵宾专线：</span>400-127-9602</h3>
+        </a>
+    </div>
+
+    <div class="pbox09-con">
+        <p>今日已有<label>150</label>人免费在线预约成功</p>
+        <p>在线智能获取房源信息</p>
+        <p>输入<label>姓名</label>和<label>电话号码</label></p>
+        <p>透彻了解您想要的楼盘信息及最新优惠详情</p>
+        <div class="pbox09-input">
+            <form id="FormInput">
+                <div class="p09-input">
+                    <label>姓名：</label>
+                    <input type="text" value="" placeholder="请输入您的姓名" id="name1" />
+                </div>
+                <div class="p09-input">
+                    <label>电话：</label>
+                    <input type="tel" value="" placeholder="请输入您的电话" id="phone1" />
+                </div>
+                <a class="btn-submit" href="javascript:void(0);" id="submit01">提交</a>
+            </form>
+        </div>
+    </div>
+
+    <div class="pagemess">
+        <p>Copyright?2019&nbsp;&nbsp;&nbsp;&nbsp;<a target="_blank" href="/index.html">上海馨房有限公司</a><br />主要经营开发商营销策划全案委托楼盘销售<br />累计服务国内房地产项目上百个，总规模逾50万平方米<br />函盖“住宅、酒店 、写字楼、购物中心”等多种类别</p>
+    </div>
+
+    <div class="footer">
+        <div class="f-con">
+            <ul>
+                <li class="foot-li01">
+                    <a>专车</a>
+                </li>
+                <li class="foot-li02">
+                    <a>预约</a>
+                </li>
+                <li class="foot-li03">
+                    <a href="tel:400-127-9602">
+                        <img style="width:auto" src="~/Scripts/templates/main/images/foot-img03.png" />
+                        <label></label>
+                        <span>电话咨询</span>
+                    </a>
+                </li>
+                <li class="foot-li04">
+                    <a>咨询</a>
+                </li>
+                <li class="foot-li05">
+                    <a>地址</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+
+    <!--弹框-->
+    <div class="page-updiv">
+        <div class="updiv-con">
+            <h3><span>预约看房</span>[@Model.Name]</h3>
+            <a class="updel"></a>
+            <div class="updiv-wrap">
+                <form id="yourformid">
+                    <div class="updiv-input">
+                        <label>姓名</label>
+                        <input type="text" value="" id="name" placeholder="请输入您的姓名" />
+                    </div>
+                    <div class="updiv-input">
+                        <label>电话</label>
+                        <input type="tel" value="" id="phone" placeholder="请输入您的联系方式" />
+                    </div>
+                    <div class="updiv-input">
+                        <a class="btn-submit" href="javascript:void(0);" id="submit">提交</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript" src="~/Scripts/templates/main/js/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/templates/main/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/templates/main/js/toucher.js"></script>
+    <script type="text/javascript" src="~/Scripts/templates/main/js/fitDevice.js"></script>
+    <script>
+        $(".nav ul li:nth-child(4n+4)").css("border-right", "0px");
+        $(".pbox02-con ul li:even").addClass("fl");
+        $(".pbox02-con ul li:odd").addClass("fr");
+
+        $(".pbox03-ul ul li:even").addClass("fl");
+        $(".pbox03-ul ul li:odd").addClass("fr");
+    </script>
+    <script type="text/javascript">
+        $(".nav ul li a").click(function () {
+
+            var href = $(this).attr("href");
+
+            var pos = $(href).offset().top;
+
+            $("html,body").animate({
+                scrollTop: pos
+            }, 1000);
+
+            return false;
+
+        });
+    </script>
+    <script>
+        //手机端手势滑动
+
+        $(function () {
+            var myTouch = util.toucher(document.getElementById('myCarousel'));
+            myTouch.on('swipeLeft', function (e) {
+                $('.right').click();
+            }).on('swipeRight', function (e) {
+                $('.left').click();
+            });
+        })
+    </script>
+
+    <script>
+        var h1 = $(".pbox02-con ul li a").height() + 20;
+        $(".pbox02-con ul li").hover(
+            function () {
+                $(this).find("a").animate({
+                    height: "100%"
+                });
+            },
+            function () {
+                $(this).find("a").animate({
+                    height: h1
+                });
+            }
+        );
+        $(".pbox03-ul ul li").hover(
+            function () {
+                $(this).find("a").animate({
+                    height: "100%"
+                });
+            },
+            function () {
+                $(this).find("a").animate({
+                    height: h1
+                });
+            }
+        );
+    </script>
+    <script type="text/javascript">
+        //多个选项卡js代码
+        function switchTab(parentId) {
+            var _tab = $("#" + parentId + ">div:eq(0) a"); //获取选项卡导航
+            var _box = $("#" + parentId + ">div:eq(1) ul"); //获取内容切换区
+            var _hover = 'on'; //当前点击显示的样式
+            var _index; //索引值
+            var i = 0;
+            _tab.hover(function () {
+                var thisDom = this;
+                i = setTimeout(function () {
+                    _index = _tab.index(thisDom); //获取当前点击的索引值
+                    $(thisDom).addClass(_hover).siblings().removeClass(_hover); //当前点击高亮显示
+                    _box.eq(_index).show().siblings().hide(); //通过索引值让对应的选项内容区显示
+                }, 100);
+            }, function () {
+                clearTimeout(i);
+            });
+        }; //选项卡导航条移上去时延迟切换
+        switchTab("switchTab");
+    </script>
+
+    <script>
+        //隐藏弹框
+        $("a.updel").click(function () {
+            $(".page-updiv").hide();
+        });
+        //预约回电
+        $(".pbox01-li01 a").click(function () {
+            $(".updiv-con h3 span").text("预约回电");
+            $(".page-updiv").show();
+        });
+        //意向登记
+        $(".pbox01-li02 a").click(function () {
+            $(".updiv-con h3 span").text("意向登记");
+            $(".page-updiv").show();
+        });
+        //获取地址
+        $(".pbox01-li03 a").click(function () {
+            $(".updiv-con h3 span").text("获取地址");
+            $(".page-updiv").show();
+        });
+        //专车接送
+        $(".foot-li01 a").click(function () {
+            $(".updiv-con h3 span").text("专车接送");
+            $(".page-updiv").show();
+        });
+        //预约看房
+        $(".foot-li02 a").click(function () {
+            $(".updiv-con h3 span").text("预约看房");
+            $(".page-updiv").show();
+        });
+        //在线咨询
+        $(".foot-li04 a").click(function () {
+            $(".updiv-con h3 span").text("在线咨询");
+            $(".page-updiv").show();
+        });
+        //获取地址
+        $(".foot-li05 a").click(function () {
+            $(".updiv-con h3 span").text("获取地址");
+            $(".page-updiv").show();
+        });
+    </script>
+
+    <script>
+        //提交留言
+        $("#submit").click(function () {
+            if ($("#phone").val() == "" || $("#name").val() == "") {
+                alert("姓名或者电话不能为空");
+                return;
+            }
+            $.ajax({
+                type: "POST",
+                url: "/main/usersave",
+                data: { name: $("#name").val(), phone: $("#phone").val(), Fid: $("#Fid").val()},// 你的formid
+                dataType: "json",
+                error: function (request) {
+                    alert("出错拉,请稍后再试!");
+                },
+                success: function (data) {                   
+                    if (data.status) {
+                        alert("提交成功");
+                    }
+                }
+            });
+        })
+    </script>
+
+    <script>
+        //提交留言
+        $("#submit01").click(function () {            
+            if ($("#phone1").val() == "" || $("#name1").val() == "") {
+                alert("姓名或者电话不能为空");
+                return;
+            }
+            $.ajax({
+                type: "POST",
+                url: "/main/usersave",
+                data: { name: $("#name1").val(), phone: $("#phone1").val(), Fid:$("#Fid").val() },// 你的formid
+                dataType: "json",
+                error: function (request) {
+                    alert("出错拉,请稍后再试!");
+                },
+                success: function (data) {
+                    if (data.status) {
+                        alert("提交成功");
+                    }
+                }
+            });
+        })
+    </script>
+
+    <script>
+        //提交留言
+        $("#submit02").click(function () {
+            if ($("#phone2").val() == "" || $("#name2").val() == "") {
+                alert("姓名或者电话不能为空");
+                return;
+            }
+            $.ajax({
+                type: "POST",
+                url: "/main/usersave",
+                data: { name: $("#name2").val(), phone: $("#phone2").val(),Fid: $("#Fid").val() },// 你的formid
+                dataType: "json",
+                error: function (request) {
+                    alert("出错拉,请稍后再试!");
+                },
+                success: function (data) {
+                    if (data.status) {
+                        alert("提交成功");
+                    }
+                }
+            });
+        })
+    </script>
+    <script>
+    </script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+.peopleLeft{width:700px;padding-right:10px;text-align:left}
+.peopleRight{width:220px}
+.pRight{width:267px}
+.pointInfo{color:#666}
+.pointInfo span{color:#015287;font-weight:bolder}
+.switchBox{width:100%;height:32px;clear:both}
+.switchBox .active{background-color:#309FE5;font-weight:bolder;color:#FFF;cursor:pointer;float:left;font-size:14px;font-style:normal;height:30px;line-height:30px;text-align:center;text-decoration:none;width:85px}
+.switchBox span{background-color:#5297DD;color:#FFF;cursor:pointer;float:left;font-size:14px;font-style:normal;height:30px;line-height:30px;text-align:center;text-decoration:none;width:85px}
+
+.pointIntro{color:#333;border:1px solid #999;line-height:25px;padding:5px}
+.pointExchangeInfo{margin:5px 0 0 0;color:#666666}
+.dInfo{width:100%;text-align:center;margin:20px auto}
+.dTitle{height:30px;line-height:30px;font-weight:bolder;font-size:14pt;color:#1190E1;padding-bottom:20px}
+.dInfo li{float:left;width:235px;font-weight:bolder;margin:10px 0}
+.poingCost{color:#015287}

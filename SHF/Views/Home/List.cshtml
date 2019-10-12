@@ -1,0 +1,202 @@
+﻿
+@{
+    ViewBag.Title = "房产信息总览";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style type="text/css">
+    table a {
+        text-decoration: none;
+    }
+
+    .layuiadmin ul li {
+        display: block;
+        float: left;
+        margin-left: 25px;
+    }
+
+    .li-active.active a {
+        color: #009688;
+    }
+
+    .li-active a {
+        color: #2789ba;
+    }
+
+    .tog {
+    }
+    /*
+        调整多选框样式
+    */
+    .layui-card-header .layui-icon {
+        right: 0px;
+    }
+
+    .layui-form-checkbox[lay-skin=primary] span {
+        margin-top: -7px;
+    }
+   
+</style>
+<form class="layui-form">
+    <div class="layui-fluid">
+        <div class="layui-card">
+            <div class="layui-form layui-card-header layuiadmin">
+                <ul class="nav nav-tabs">
+                    <li class="li-active active">
+                        <a href="/home/list">房产列表信息</a>
+
+                    </li>
+                    <li class="li-active">
+                        <a href="/home/add">添加房产</a>
+                    </li>
+                    <li class="li-active">
+                        <a href="/home/Customer">客户列表</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="layui-form layui-card-header layuiadmin-card-header-auto">
+               
+            </div>
+            <div class="layui-card-body">
+                <table class="bordered layui-table" lay-skin="line">
+                    <thead>
+                        <tr>
+                            <th>序号</th>
+                            <th>楼盘</th>
+                            <th>地址</th>
+                            <th>绿化</th>
+                            <th>均价</th>
+                            <th>物业</th>
+                            <th>开发商</th>
+                            <th>交房时间</th>                
+                            <th>状态</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody id="TbodyList"></tbody>
+                </table>
+                <div class="paging">
+                    <span id="pageBar"></span>
+                </div>
+            </div>
+
+        </div>
+    </div>   
+</form>
+<script id="trTemp" type="text/x-jquery-tmpl">
+    <tr>
+        <td>${rank}</td>
+        <td>${Name}</td>
+        <td style="width:200px">${Address}</td>
+        <td>${Green}</td>
+        <td>${AveragePrice}</td>
+        <td>${Property}</td>
+        <td>${Developers}</td>
+        <td>${DeadLine}</td>       
+        <td>${Status(IsDel)}</td>
+        <td>
+            <div>
+
+                <a href="#" class="layui-btn layui-btn-xs" onclick="OpenIFrameWindow('上传图片和说明','/Detail/index?PID=${PID}', '850px','500px')">上传图片</a>
+                @*<a href="#" class="layui-btn layui-btn-xs" onclick="OpenIFrameWindow('查看详细','/Home/Detail?PID=${PID}', '850px','500px')">查看详细</a>*@
+                <a href="#" class="layui-btn layui-btn-xs" onclick="OpenIFrameWindow('编辑','/Home/Edit?PID=${PID}', '850px','500px')">编辑</a>
+                <a href="#" class="layui-btn layui-btn-xs" onclick="Del('${PID}')">下架</a>
+            </div>
+        </td>
+    </tr>
+</script>
+<script>
+    var PageSize = 10;
+    $(function () {
+        GetData(1); 
+       
+    })
+    $("#search").on('click', function () {
+        $("#datavalue").val($('.active').attr('data'));
+        GetData(1);
+    });
+    function Status(num) {
+        if (num == 1)
+            return "已下架"
+        else
+            return "在线"
+    }
+    function Del(pid) {
+        datavalue = pid;
+        layer.msg("确定下架吗？", {
+            time: 0 //不自动关闭
+            , btn: ['确定', '取消']
+            , yes: function (index) {
+                $.ajax({
+                    type: "Post",
+                    url: "/home/Deletes",
+                    dataType: "json",
+                    data: {
+                        "value": datavalue
+                    },
+                    success: function (json) {
+                        if (json.Code == true) {
+                            layer.msg("下架成功");
+                        }
+                        else {
+                            layer.msg("下架失败," + json.Message);
+                        }
+                    }
+                });
+            }
+            , cancel: function (index) {
+
+            }
+        });
+    }     
+    function GetData(PageIndex) {
+        var data = {
+            PageIndex: PageIndex,
+            PageSize: 10           
+        };
+        var index = layer.load();
+        $.ajax({
+            url: "/Home/GetList",
+            type: "POST",
+            data: data,
+            success: function (data) {
+                layer.close(index);
+                $("#TbodyList").html('');
+                $("#trTemp").tmpl(data.list).appendTo('#TbodyList');
+                //生成页码条方法（方法对象,页码条容器，当前页码，总页数，页码组容量，总行数）
+                makePageBar(GetData, document.getElementById("pageBar"), data.PageIndex, data.PageCount, 10, data.RowCount);               
+            },
+            error: OnError
+        });
+    }
+    //错误处理
+    function OnError(XMLHttpRequest, textStatus, errorThrown) {
+        layer.msg("出现错误" + errorThrown, { icon: 3 });
+    }    
+    function formatDate(date) {
+        if (date == null)
+            return "";
+        var now = parseInt(date.replace("/Date(", "").replace(")/", ""));
+        var d = new Date(now);
+        month = '' + (d.getMonth() + 1),
+            day = '' + d.getDate(),
+            year = d.getFullYear();
+        if (month.length < 2) month = '0' + month;
+        if (day.length < 2) day = '0' + day;
+        return [year, month, day].join('-');
+    }
+</script>
+<script>
+  
+    var parseParam = function (param, key) {
+        var paramStr = "";
+        if (param instanceof String || param instanceof Number || param instanceof Boolean) {
+            paramStr += "&" + key + "=" + encodeURIComponent(param);
+        } else {
+            $.each(param, function (i) {
+                var k = key == null ? i : key + (param instanceof Array ? "[" + i + "]" : "." + i);
+                paramStr += '&' + parseParam(this, k);
+            });
+        }
+        return paramStr.substr(1);
+    };
+</script>

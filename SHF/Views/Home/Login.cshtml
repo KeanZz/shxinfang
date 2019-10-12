@@ -1,0 +1,105 @@
+﻿@{
+    ViewBag.Title = "登录";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model Model.Content.Builds
+<style type="text/css">
+    table a {
+        text-decoration: none;
+    }
+
+    .layui-input-block {
+        width: 190px;
+    }
+
+    /*.layui-form-item .layui-inline {
+        margin-right: 250px;
+    }*/
+
+    input, textarea {
+        color: #00B2E2;
+    }
+</style>
+<div class="layui-fluid form">
+    <div class="layui-card">
+        <div class="layui-card-header">登录首页</div>
+        <div class="layui-card-body" style="padding:15px;">
+            <div class="layui-form">
+                <div class="layui-form-item">
+                    <div class="layui-inline">
+                        <label class="layui-form-label">账号</label>
+                        <div class="layui-input-block">
+                            <input id="Name" value="" class="layui-input" type="text">
+                        </div>
+                    </div>
+                    <div class="layui-inline">
+                        <label class="layui-form-label">密码</label>
+                        <div class="layui-input-block">
+                            <input id="Password" value="" class="layui-input" type="password">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="layui-form-item layui-form-text">
+                    <label class="layui-form-label"></label>
+                    <div class="layui-input-block" style="width:80%">
+                        <input type="button" id="btnSave" lay-submit value="提交" class="layui-btn">
+                    </div>
+                </div>
+            </div>          
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $(function () {
+        $("input").attr('autocomplete', 'off');
+        layui.use('laydate', function () {
+            var laydate = layui.laydate;
+            //执行一个laydate实例
+            laydate.render({
+                elem: "#DeadLine"
+            });
+        });       
+        $("#btnSave").on('click', function () {
+            var ret = false;
+            $("input[type='text']").each(function () {
+                if ($(this).val().trim() == "") {
+                    layer.msg($(this).parent().siblings('label').text() + "不能为空");
+                    $(this).focus();
+                    ret = true;
+                    return false;
+                }
+            });
+            if (ret) return;
+            var data = {
+                Name: $("#Name").val(),
+                Password: $("#Password").val(),               
+            };
+            var index = layer.load();
+            $.ajax({
+                url: "/home/LoginIn",
+                type: "POST",
+                data: data,
+                success: function (json) {
+                    layer.close(index);
+                    if (json.Code == true) {
+                        location.href = "/home/list";                     
+                    }
+                    else {
+                        location.href = "/home/login";
+                    }
+
+                },
+                error: function () {
+                    layer.msg("出现错误");
+                }
+            });
+        });
+    });
+    //错误处理
+    function OnError(XMLHttpRequest, textStatus, errorThrown) {
+        layer.msg("出现错误" + errorThrown, { icon: 3 });
+    }
+</script>

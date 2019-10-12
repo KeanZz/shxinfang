@@ -1,0 +1,74 @@
+/*****************************
+ * Author CF
+ * Date 2014-07-31
+ * reset.css 基本样式类
+ *****************************/
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,p,blockquote,th,td ,img ,button{padding: 0;margin: 0;}
+table {border-collapse: collapse;border-spacing: 0;}
+fieldset,img,a img{border:0;}
+address,caption,cite,code,dfn,em,strong,th,var {font-weight: normal;font-style: normal;}
+ol,ul,li{list-style: none;}
+caption,th {text-align: left;}
+h1,h2,h3,h4,h5,h6 {font-weight: normal;font-size: 100%;}
+q:before,q:after {content:'';}
+table,td,input{font-size:12px;padding:0;outline: none;}
+body{text-align:left;margin:0 auto;padding:0;background:#FFF;color:#666;font-family: "SimSun","Arial";font-size:12px;}
+img{vertical-align: middle;}
+
+/* 默认链接颜色 */
+a{outline-style:none;text-decoration:none;color: #666;-webkit-tap-highlight-color: rgba(0,0,0,0);}
+a:hover{color:#ED7612;text-decoration:underline;}
+
+/*清除浮动*/
+.clearfix:after {content:"."; display:block; height:0; visibility:hidden; clear:both; }
+.clearfix { *zoom:1; }
+
+/*自定大小*/
+.f12{font-size:12px;}
+.f14{font-size:14px;}
+.f16{font-size:16px;}
+.f18{font-size:18px;}
+.f30{font-size:30px;}
+
+/*字体属性*/
+.bold{font-weight: bold;}
+
+/*字体颜色*/
+.black{color:#000;}
+.red1{color:#F40;}
+.red2{color:#ff0000;}
+.grey{color:#828282;}
+
+/*通用属性*/
+.left{float:left;}
+.right{float:right;}
+.hidden{display:none;}
+.show{display:block;}
+.b{font-weight:bold;}
+.hand{cursor:pointer;}
+.fontArial{font-family:'Arial';}
+.fontYH{font-family: "microsoft yahei";}
+.error{color:#ff0000;font-size:12px;}
+.space{padding: 0 8px;}
+.block{display:block;overflow: hidden;}
+.inblock{display: inline-block;}
+
+/*文字对齐方式*/
+.txtLeft{text-align:left;}
+.txtRight{text-align:right;}
+.txtCenter{text-align:center;}
+
+/*下划线*/
+.unline,.unline a{text-decoration:underline;}
+.nounline,.nounline a{text-decoration:none}
+.nooutline{outline: none;}
+
+.layout{width:1010px;margin:0 auto;}
+.checkbox{}
+.mb0{margin-bottom: 0;}
+.opacity5:hover{opacity: 0.5;}
+.opacity6:hover{opacity: 0.6;}
+.opacity7:hover{opacity: 0.7;}
+.opacity8:hover{opacity: 0.8;}
+.input{border: 1px solid #e4e4e4;outline: none;};
+
