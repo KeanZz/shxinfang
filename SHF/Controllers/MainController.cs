@@ -26,7 +26,7 @@ namespace SHF.Controllers
         /// <returns></returns>
         public ActionResult Index()
         {
-            string sql = " select top 4 builds.PID,builds.Name,builds.Address, bdetails.Urls from Builds left join BDetails on Builds.PID=BDetails.PID where BDetails.Type=0 and Builds.IsDel=0 ";
+            string sql = " select top 4 builds.PID,builds.Name,builds.Address, bdetails.Urls from Builds left join BDetails on Builds.PID=BDetails.PID where BDetails.Type=0 and Builds.IsDel=0 and bdetails.isdel=0";
             List<Main> mains = BD.GetModelsByValue(sql, null);
             ViewBag.Main = mains;
             return View();

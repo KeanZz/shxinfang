@@ -6,7 +6,7 @@
     <meta name="format-detection" content="telephone=yes" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=3,user-scalable=yes" />
-    <title></title>
+    <title>@Model.Name</title>
     <link rel="stylesheet" href="~/Scripts/templates/main/css/common.css?222" />
     <link rel="stylesheet" href="~/Scripts/templates/main/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/Scripts/templates/main/css/media_01.css" />
@@ -87,7 +87,7 @@
     <div class="page-box01">
         <div class="pbox01-top">
             <div class="page-price fl">
-                <h3>均价：<label>9500</label>元/平米</h3>
+                <h3>均价：<label>@int.Parse(Model.AveragePrice.ToString())</label>元/平米</h3>
                 <ul>
                     <li class="pbox01-li01">
                         <a>预约回电</a>
