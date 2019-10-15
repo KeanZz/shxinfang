@@ -8,9 +8,9 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=3,user-scalable=yes" />
     <title>@Model.Name</title>
     <link rel="stylesheet" href="~/Scripts/templates/main/css/common.css?222" />
-    <link rel="stylesheet" href="~/Scripts/templates/main/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/Scripts/templates/main/css/media_01.css" />
-    <link rel="stylesheet" href="~/Scripts/templates/main/css/media_02.css" />
+    @*<link rel="stylesheet" href="~/Scripts/templates/main/css/bootstrap.min.css" />*@
+    <link rel="stylesheet" href="~/Scripts/templates/main/css/media_01.css?2" />
+    <link rel="stylesheet" href="~/Scripts/templates/main/css/media_02.css?2" />
     <style type="text/css">
         img {
             display: block;
@@ -52,12 +52,12 @@
     <!--楼盘轮播图-->
     <div id="myCarousel" class="carousel  container slide" data-ride="carousel" data-interval="2000">
         <!-- 轮播（Carousel）项目 -->
-        <div class="carousel-inner" ontouchstart="getFlag()" ontouchmove="setFlag()" ontouchend="change()">           
+        <div class="carousel-inner" ontouchstart="getFlag()" ontouchmove="setFlag()" ontouchend="change()">
             @{
-               int num = 0;
-               foreach (var item in (ViewBag.Details as List<Model.Content.BDetails>).FindAll(z => z.Type == 1))
-               {
-                    if (num==0)
+                int num = 0;
+                foreach (var item in (ViewBag.Details as List<Model.Content.BDetails>).FindAll(z => z.Type == 1))
+                {
+                    if (num == 0)
                     {
                         <div class="item active">
                             <img src="@item.Urls">
@@ -271,47 +271,22 @@
             <img src="~/Scripts/templates/main/images/title05.png" />
         </div>
         <div class="pbox06-con">
-            <ul>               
-                <li>
-                    <div class="wenzi fl">
-                        <h5>价格更低</h5>
-                        <p>同样的房子，我们可以让您享受市场底价，如果外面有更便宜的，我们将以2倍的差价补偿给您，不玩虚的、可以白纸黑字盖章，您可以随便对比，这就是我们与中介的区别。</p>
-                    </div>
-                    <div class="pbox06-img fr">
-                        <img src="~/Scripts/templates/main/images/pbox06-img01.jpg" />
-                    </div>
-                </li>
-                <li>
-                    <div class="wenzi fr">
-                        <h5>房源优先</h5>
-                        <p>对于一些稀缺房源，我们会优先自己销售，不会给中介代销。所以，稀缺好房源您在中介那里买不到，但是跟着我们买，所有房源您都可以优先选择。</p>
-                    </div>
-                    <div class="pbox06-img fl">
-                        <img src="~/Scripts/templates/main/images/pbox06-img02.jpg" />
-                    </div>
-                </li>
-                <li>
-                    <div class="wenzi fl">
-                        <h5>风险规避</h5>
-                        <p>如果您定下后不想要了、或者家人不同意买了，只要您在签合同之前提出来，我们承诺无条件帮您解决，不用您花一分钱，让您无后顾之忧，这是任何中介都无法给您的！</p>
-                    </div>
-                    <div class="pbox06-img fr">
-                        <img src="~/Scripts/templates/main/images/pbox06-img03.jpg" />
-                    </div>
-                </li>
-                <li>
-                    <div class="wenzi fr">
-                        <h5>售后服务</h5>
-                        <p>选择中介，往往是一锤子买卖，只要签了合同，您遇到什么事情，很难找到人对接。而跟着我们买，售后服务有保证，我们提供一对一终生服务。买房是大事，风险越低越好！</p>
-                    </div>
-                    <div class="pbox06-img fl">
-                        <img src="~/Scripts/templates/main/images/pbox06-img04.jpg" />
-                    </div>
-                </li>
+            <ul>
+                @foreach (var item in (ViewBag.Details as List<Model.Content.BDetails>).FindAll(z => z.Type == 7))
+                {
+                    <li>
+                        <div class="wenzi fl">
+                            <h5><img class="imgcontent" src="~/Scripts/templates/main/images/touxiang.png" /> @item.Person</h5>
+                            <p>@item.Explain</p>
+                        </div>
+                        <div class="pbox06-img fr">
+                            <img src="@item.Urls" />
+                        </div>
+                    </li>
+                }               
             </ul>
         </div>
     </div>
-
     <!--楼盘实景-->
     <div class="page-box02" id="pbox06">
         <div class="title">
@@ -554,12 +529,12 @@
             $.ajax({
                 type: "POST",
                 url: "/main/usersave",
-                data: { name: $("#name").val(), phone: $("#phone").val(), Fid: $("#Fid").val()},// 你的formid
+                data: { name: $("#name").val(), phone: $("#phone").val(), Fid: $("#Fid").val() },// 你的formid
                 dataType: "json",
                 error: function (request) {
                     alert("出错拉,请稍后再试!");
                 },
-                success: function (data) {                   
+                success: function (data) {
                     if (data.status) {
                         alert("提交成功");
                     }
@@ -570,7 +545,7 @@
 
     <script>
         //提交留言
-        $("#submit01").click(function () {            
+        $("#submit01").click(function () {
             if ($("#phone1").val() == "" || $("#name1").val() == "") {
                 alert("姓名或者电话不能为空");
                 return;
@@ -578,7 +553,7 @@
             $.ajax({
                 type: "POST",
                 url: "/main/usersave",
-                data: { name: $("#name1").val(), phone: $("#phone1").val(), Fid:$("#Fid").val() },// 你的formid
+                data: { name: $("#name1").val(), phone: $("#phone1").val(), Fid: $("#Fid").val() },// 你的formid
                 dataType: "json",
                 error: function (request) {
                     alert("出错拉,请稍后再试!");
@@ -602,7 +577,7 @@
             $.ajax({
                 type: "POST",
                 url: "/main/usersave",
-                data: { name: $("#name2").val(), phone: $("#phone2").val(),Fid: $("#Fid").val() },// 你的formid
+                data: { name: $("#name2").val(), phone: $("#phone2").val(), Fid: $("#Fid").val() },// 你的formid
                 dataType: "json",
                 error: function (request) {
                     alert("出错拉,请稍后再试!");

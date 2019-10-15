@@ -195,5 +195,55 @@ namespace SHF.Controllers
         }
         public ActionResult Login()
         { return View(); }
+
+        public ActionResult Comment(string PID)
+        {
+            ViewBag.PID = PID;
+            return View();
+        }
+        /// <summary>
+        /// 上传文件保存
+        /// </summary>
+        /// <returns></returns>        
+        [HttpPost]
+        public JsonResult UploadSave(string ID, string username, string comment)
+        {
+            string pathForSaving = Server.MapPath("~/");
+            string sqlcount = "select top 1* from builds where isdel=0 and  PID='" + ID + "'";
+            Model.Content.Builds builds = BD.GetModelByValue(sqlcount, null);
+            try
+            {
+                foreach (string strfile in Request.Files)
+                {
+                    try
+                    {
+                        HttpPostedFileBase uploadFile = Request.Files[strfile] as HttpPostedFileBase;
+                        if (uploadFile != null && uploadFile.ContentLength > 0)
+                        {
+                            var paths = DateTime.Now.ToString("yyMMdd_hhmmss") + "_" + uploadFile.FileName;
+                            uploadFile.SaveAs(Server.MapPath("/UploadFiles/") + paths);
+                            //添加附件信息
+                            Model.Content.BDetails bDetails = new Model.Content.BDetails();
+                            bDetails.Person = username;
+                            bDetails.PID = ID;
+                            bDetails.Urls = "/UploadFiles/" + paths;
+                            bDetails.Time = DateTime.Now;
+                            bDetails.Explain = comment;
+                            bDetails.Type = 7;//7为评论图片                          
+                            Details.Insert(bDetails);
+                        }
+                    }
+                    catch (Exception ee)
+                    {
+                        //邮件通知
+                    }
+                }
+            }
+            catch (Exception ee)
+            {
+                return Json(new { code = 1 }, JsonRequestBehavior.DenyGet);
+            }
+            return Json(new { code = 0 }, JsonRequestBehavior.DenyGet);
+        }
     }
 }

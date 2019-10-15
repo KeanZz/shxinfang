@@ -45,5 +45,6 @@ namespace Model.Content
         /// </summary>
         [Field]
         public int IsDel { set; get; }
+      
     }
 }
